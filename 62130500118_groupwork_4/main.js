@@ -93,30 +93,24 @@ const app = {
             this.wantToShowBigImage = false
         },
         forwardBigImage() {
-            this.bigImage = this.images[this.images.findIndex((img) => {
+            this.bigImage = this.imagesShow[this.imagesShow.findIndex((img) => {
                 return img.img === this.bigImage
             }) + 1].img
-            if (this.images.findIndex((img) => {
-                    return img.img === this.bigImage
-                }) === this.images.length - 1) {
-                this.bigImage = this.images[0].img
-            }
         },
         backBigImage() {
-            if (this.images.findIndex((img) => {
-                    return img.img === this.bigImage
-                }) === 0) {
-                this.bigImage = this.images[this.images.length - 1].img
-            }
-            this.bigImage = this.images[this.images.findIndex((img) => {
+            this.bigImage = this.imagesShow[this.imagesShow.findIndex((img) => {
                 return img.img === this.bigImage
             }) - 1].img
+            
         }
     },
 
     computed: {
         countFavorite() {
             return this.images.filter(t => t.favorite).length
+        },
+        imagesShow(){
+            return this.images.filter(t => t.show === true)
         }
     }
 }
