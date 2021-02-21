@@ -19,7 +19,7 @@
     <script src="https://unpkg.com/vue@next"></script>
 </head>
 
-<body class="bg-yellow-50">
+<body class="bg-blue-50">
     <div id="app">
         <div v-show="wantToShowBigImage"
             class="bg-black bg-opacity-80 w-full h-screen z-20 fixed top-0 flex content-center">
@@ -29,7 +29,7 @@
             <button @click="backBigImage" class="material-icons absolute text-white top-1/2 left-6"> arrow_back_ios </button>
         </div>
         <h1
-            class="py-8 my-8 bg-yellow-300 text-4xl font-bold text-center text-pink-400 border-solid border-4 border-light-blue-600 shadow-md">
+            class="py-8 my-6 bg-purple-100 text-4xl font-extrabold text-center text-pink-400 border-solid border-4 border-pink-200 shadow-md">
             The Seven Wonders of The World</h1>
         <div class="mb-8 max-w-6xl mx-auto">
             <h2
@@ -40,17 +40,18 @@
                     v-show="!searchActive" @click="switchToSearch">search</button>
                 <div v-show="searchActive ">
                     <input type="text" v-model="searchInputText" placeholder="What you want?"
-                        class="py-2 px-2 bg-white rounded border-b-2 border-blue-300" @keyup.enter="search">
+                        class="py-2 px-2 bg-white rounded border-b-2 border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent" 
+                        @keyup.enter="search">
                     <button @click="switchToSearch"
-                        class="ml-1 bg-blue-400 text-white py-2 px-2 rounded">Cancel</button>
+                        class="ml-2 bg-blue-400 text-white py-2 px-2 rounded hover:bg-pink-300 focus:outline-none focus:ring-2 focus:ring-pink-600 focus:ring-opacity-50">Cancel</button>
                 </div>
             </div>
             <div class="space-y-7 z-0">
-                <div v-for="(image,index) in images" class="flex space-x-6 bg-yellow-100 p-4 shadow-md relative"
+                <div v-for="(image,index) in images" class="flex space-x-6 bg-purple-50 p-4 shadow-md relative"
                     v-show="image.show">
                     <div class="relative">
                         <img :src=image.img class="max-w-lg shadow-lg cursor-pointer"
-                            v-bind:class="[image.favorite ? 'ring ring-pink-600 ring-offset-4 ring-offset-yellow-100' : ' ']"
+                            v-bind:class="[image.favorite ? 'ring ring-pink-600 ring-offset-4 ring-offset-purple-100' : ' ']"
                             @click="showBigImage(index)">
                         <span v-show="!image.favorite" @click="favorite(index)"
                             class="text-3xl absolute bottom-2 right-2 text-pink-400 material-icons transition duration-500 cursor-pointer">favorite_border</span>
@@ -58,12 +59,12 @@
                             class="text-3xl absolute bottom-2 right-2 text-pink-400 material-icons transition duration-500 cursor-pointer">favorite</span>
                     </div>
                     <div class="flex flex-col space-y-6 tracking-wide leading-6 max-w-lg ">
-                        <h2 class="text-xl font-semibold text-center">{{image.name}}</h2>
-                        <p class="ml-8">{{image.description}}</p>
+                        <h2 class="text-xl font-semibold text-center text-blue-800">{{image.name}}</h2>
+                        <p class="ml-8 text-blue-600">{{image.description}}</p>
                     </div>
                 </div>
             </div>
-            <p class="text-center" v-show="!hasImages">No information</p>
+            <p class="text-center text-2xl font-bold text-blue-300 mt-16" v-show="!hasImages">No information</p>
         </div>
 
     </div>
