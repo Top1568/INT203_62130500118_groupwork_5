@@ -89,6 +89,7 @@ const app = {
         showBigImage(index) {
             this.wantToShowBigImage = true
             this.bigImage = this.images[index].img
+            this.orderImg = index
         },
         closeBigImage() {
             this.wantToShowBigImage = false
