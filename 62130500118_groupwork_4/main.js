@@ -55,7 +55,8 @@ const app = {
             searchInputText: '',
             hasImages: true,
             wantToShowBigImage: false,
-            bigImage: " "
+            bigImage: " ",
+            orderImg: 0
         }
     },
     methods: {
@@ -93,15 +94,22 @@ const app = {
             this.wantToShowBigImage = false
         },
         forwardBigImage() {
-            this.bigImage = this.imagesShow[this.imagesShow.findIndex((img) => {
-                return img.img === this.bigImage
-            }) + 1].img
+            if (this.orderImg === this.imagesShow.length - 1) {
+                this.orderImg = 0
+                this.bigImage = this.imagesShow[this.orderImg].img
+            } else {
+                this.bigImage = this.imagesShow[++this.orderImg].img
+            }
+
         },
         backBigImage() {
-            this.bigImage = this.imagesShow[this.imagesShow.findIndex((img) => {
-                return img.img === this.bigImage
-            }) - 1].img
-            
+            if (this.orderImg === 0) {
+                this.orderImg = this.imagesShow.length - 1
+                this.bigImage = this.imagesShow[this.orderImg].img
+            } else {
+                this.bigImage = this.imagesShow[--this.orderImg].img
+            }
+
         }
     },
 
@@ -109,7 +117,7 @@ const app = {
         countFavorite() {
             return this.images.filter(t => t.favorite).length
         },
-        imagesShow(){
+        imagesShow() {
             return this.images.filter(t => t.show === true)
         }
     }
