@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Seven Wonders of The World</title>
+    <link rel="icon" href="./images/worldIcon.png" sizes="96x96" type="image/png">
+    <!-- https://google.github.io/material-design-icons/#icon-font-for-the-web -->
+    <!-- Using via Google Web Fonts -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+    <!-- https://tailwindcss.com/docs/installation -->
+    <!-- Using Tailwind via CDN -->
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+
+    <!-- https://v3.vuejs.org/guide/installation.html#release-notes -->
+    <!-- Vue CDN -->
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body class="bg-blue-50">
+    <div id="app">
+        <h1
+            class="py-8 my-6 bg-purple-100 text-4xl font-extrabold text-center text-pink-400 border-solid border-4 border-pink-200 shadow-md">
+            The Seven Wonders of The World</h1>
+        <photo-item :images="images" @favorite-image="favorite" @show-big-image="showBigImage"></photo-item>
+        <photo-search :has="hasImages" @search-images="search" @switch-to-search="resetSearch"></photo-search>
+        <photo-view :img="bigImage" :show="wantToShowBigImage" @close-big-image="closeBigImage"
+            @forward-big-image=" forwardBigImage" @backward-big-image="backwardBigImage"></photo-view>
+    </div>
+
+    <!-- my main.js -->
+    <script src="./main.js"></script>
+    <script src="./components/PhotoItem.js"></script>
+    <script src="./components/PhotoSearch.js"></script>
+    <script src="./components/PhotoView.js"></script>
+
+    <script>
+        const mountedApp = app.mount('#app')
+    </script>
+</body>
+
+</html>
